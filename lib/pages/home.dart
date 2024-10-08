@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/background.png'),
-                fit: BoxFit.fill, // Adjust the fit as needed
+                fit: BoxFit.cover, // Adjust the fit as needed
               ),
             ),
           ),
@@ -43,10 +43,16 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset('assets/logoWersus2.png'),
-                const Text('Wersus TSP', style: TextStyle(color: Colors.white)),
+                const Text('Wersus TSP',
+                    style: TextStyle(
+                        color: Colors.white, fontFamily: 'UniteaSans')),
                 const Text('Truck Space Partner',
                     style: TextStyle(color: Colors.white)),
-                Image.asset('assets/logoWersus.png', height: 300, width: 300),
+                Image.asset(
+                  'assets/logoWersus.png',
+                  height: 300,
+                  width: 300,
+                ),
               ],
             ),
           ),
@@ -65,12 +71,17 @@ class CustomDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const AlertDialog(
-          title: Text('!'),
-          content: Text(
+        AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          content: const Text(
               'Ensure you drive safely and follow all traffic regulations. Avoid using this app while driving, as it can cause a serious accident.'),
         ),
         AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
           title: null,
           actions: [
             TextButton(
@@ -78,12 +89,12 @@ class CustomDialog extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                        const NextPage(), // Replace with your next page widget
+                    builder: (context) => const NextPage(),
                   ),
                 );
               },
-              child: const Text('START'),
+              child: const Center(
+                  child: Text('START', style: TextStyle(color: Colors.black))),
             )
           ],
         ),
