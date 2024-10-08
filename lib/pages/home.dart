@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/background.png'),
-                fit: BoxFit.cover, // Adjust the fit as needed
+                fit: BoxFit.fill, // Adjust the fit as needed
               ),
             ),
           ),
@@ -46,6 +46,7 @@ class _HomePageState extends State<HomePage> {
                 const Text('Wersus TSP', style: TextStyle(color: Colors.white)),
                 const Text('Truck Space Partner',
                     style: TextStyle(color: Colors.white)),
+                Image.asset('assets/logoWersus.png', height: 300, width: 300),
               ],
             ),
           ),
