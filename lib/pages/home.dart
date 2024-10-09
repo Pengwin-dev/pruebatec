@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '/pages/nextpage.dart';
 
 class HomePage extends StatefulWidget {
@@ -69,36 +70,61 @@ class CustomDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          content: const Text(
-              'Ensure you drive safely and follow all traffic regulations. Avoid using this app while driving, as it can cause a serious accident.'),
-        ),
-        AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          title: null,
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const NextPage(),
+    final size = MediaQuery.of(context).size;
+    return Column(children: [
+      Dialog(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          child: SizedBox(
+            height: size.height * .6,
+            child: Stack(
+              children: [
+                Positioned(
+                    top: (size.height * .2) / 2,
+                    child: Container(
+                      height: size.height * .5,
+                      width: size.width * .9,
+                      color: Colors.white,
+                      child: const Center(
+                          child: Text(
+                        'Ensure you drive safely and follow all traffic regulations. Avoid using this app while driving, as it can cause a serious accident.',
+                        style: TextStyle(color: Colors.black),
+                      )),
+                    )),
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Container(
+                    height: size.height * .2,
+                    width: size.height * .2,
+                    decoration: const ShapeDecoration(
+                      shape: CircleBorder(),
+                      color: Colors.red,
+                    ),
                   ),
-                );
-              },
-              child: const Center(
-                  child: Text('START', style: TextStyle(color: Colors.black))),
-            )
-          ],
+                ),
+              ],
+            ),
+          )),
+      AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
         ),
-      ],
-    );
+        title: null,
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NextPage(),
+                ),
+              );
+            },
+            child: const Center(
+                child: Text('START', style: TextStyle(color: Colors.black))),
+          )
+        ],
+      ),
+    ]);
   }
 }
